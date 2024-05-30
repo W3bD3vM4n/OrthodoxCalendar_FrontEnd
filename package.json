@@ -29,6 +29,7 @@
     "@syncfusion/ej2-calendars": "^25.2.5",
     "@syncfusion/ej2-inputs": "^25.2.5",
     "@syncfusion/ej2-lists": "^25.2.3",
+    "@syncfusion/ej2-locale": "^25.2.3",
     "@syncfusion/ej2-popups": "^25.2.4",
     "@syncfusion/ej2-splitbuttons": "^25.2.4",
     "express": "^4.18.2",
