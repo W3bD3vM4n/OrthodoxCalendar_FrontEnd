@@ -1,36 +1,31 @@
 import { Component } from '@angular/core';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EventSettingsModel, DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
+import { DataManager, ODataV4Adaptor, Query } from '@syncfusion/ej2-data';
 
 @Component({
-  selector: 'app-root',
-  providers: [DayService, WeekService, WorkWeekService, MonthService, AgendaService],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    providers: [HttpClientModule, DayService, WeekService, WorkWeekService, MonthService, AgendaService],
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css'
 })
 export class AppComponent {
-  public eventSettings: EventSettingsModel = {
-    dataSource: [
-      {
-        Id: 1,
-        Subject: 'Explosion of Betelgeuse Star',
-        StartTime: new Date(2024, 4, 29, 9, 30),
-        EndTime: new Date(2024, 4, 29, 11, 0)
-      }, {
-        Id: 2,
-        Subject: 'Thule Air Crash Report',
-        StartTime: new Date(2024, 4, 29, 12, 0),
-        EndTime: new Date(2024, 4, 29, 14, 0)
-      }, {
-        Id: 3,
-        Subject: 'Blue Moon Eclipse',
-        StartTime: new Date(2024, 4, 29, 9, 30),
-        EndTime: new Date(2024, 4, 29, 11, 0)
-      }, {
-        Id: 4,
-        Subject: 'Meteor Showers in 2018',
-        StartTime: new Date(2024, 4, 29, 13, 0),
-        EndTime: new Date(2024, 4, 29, 14, 30)
-      }
-    ]
-  }; 
+    public readonly: boolean = true;
+    public selectedDate: Date = new Date(2024, 4, 6);
+
+    private dataManager: DataManager = new DataManager({
+       url: 'https://localhost:7247/api/Evento',
+       adaptor: new ODataV4Adaptor,
+       crossDomain: true
+    });
+
+    public eventSettings: EventSettingsModel = {
+    includeFiltersInQuery: true, dataSource: this.dataManager, fields: {
+      id: 'id',
+      subject: { name: 'titulo' },
+      description: { name: 'detalles' },
+      startTime: { name: 'fechaInicio' },
+      endTime: { name: 'fechaFin' }
+    }
+  };
 }
