@@ -11,7 +11,7 @@ import { DataManager, ODataV4Adaptor, Query } from '@syncfusion/ej2-data';
 })
 export class AppComponent {
     public readonly: boolean = true;
-    public selectedDate: Date = new Date(2024, 4, 6);
+    public selectedDate: Date = new Date(2024, 0, 14);
 
     private dataManager: DataManager = new DataManager({
        url: 'https://localhost:7247/api/Evento',
