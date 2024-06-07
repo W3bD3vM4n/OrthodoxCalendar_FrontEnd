@@ -1,0 +1,15 @@
+/* .fila-descripcion-dia,
+.fila-tono-cantico,
+.fila-guia-ayuno,
+.fila-fiestas-liturgicas,
+.fila-santos-celebrados,
+.fila-guia-liturgia,
+.fila-lectura-diaria-epistola,
+.fila-lectura-diaria-evangelio {
+    margin-bottom: 20px;
+} */
+
+
+.custom-field-row, .custom-field-row1, .custom-field-row2 {
+    margin-bottom: 20px;
+}
