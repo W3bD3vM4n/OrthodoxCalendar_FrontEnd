@@ -1,17 +1,12 @@
 import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-
-import { BrowserModule } from '@angular/platform-browser'
 import { EventSettingsModel, PopupOpenEventArgs, ScheduleComponent, DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
-import { TimePickerModule } from '@syncfusion/ej2-angular-calendars'
 import { DropDownList } from '@syncfusion/ej2-dropdowns';
-import { TextBoxModule, TextAreaModule } from '@syncfusion/ej2-angular-inputs';
-import { ColorRangeData, NumericTextBox, TextArea } from '@syncfusion/ej2-inputs';
-
-import { eventsData } from './data';
-
 import { createElement, extend } from '@syncfusion/ej2-base';
-import { DataManager, WebApiAdaptor, Query } from '@syncfusion/ej2-data';
+import { Evento } from './models/evento.interface';
+import { EventoService } from './services/evento.service';
+import { convertEventosToEventosSF } from './mappers/evento-mapper';
+import { EventoSF } from './models/evento-sf.interface';
 
 @Component({
     selector: 'app-root',
@@ -19,28 +14,26 @@ import { DataManager, WebApiAdaptor, Query } from '@syncfusion/ej2-data';
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-    // apiValue: string = '';
+    public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
 
-    // constructor(private httpClient: HttpClient) {
-    //     this.fetchData();
-    // }
+    eventosFromAPI: Evento[] = [];
 
-  // Servicio para recuperar los datos
-    // fetchData() {
-    //     this.httpClient
-    //     .get('https://localhost:7247/api/Evento')
-    //     .subscribe((data: any) => {
-    //         console.log(data);
-    //     });
-    // }
+    constructor(private eventoService: EventoService) { }
 
-   public selectedDate: Date = new Date(2018, 1, 15);
+    ngOnInit(): void {
+        this.eventoService.fetchData().subscribe((data: Evento[]) => {
+            this.eventosFromAPI = data;
+            console.log("data:", this.eventosFromAPI)
+            console.log("converted-data:", convertEventosToEventosSF(this.eventosFromAPI))
+            this.eventSettings = { dataSource: convertEventosToEventosSF(data) };
+        })
+    }
+
+    public selectedDate: Date = new Date(2024, 5, 8);
     public views: Array<string> = ['Day', 'Week', 'WorkWeek', 'Month'];
-    public eventSettings: EventSettingsModel = {
-        dataSource: eventsData
-    };
+
     onPopupOpen(args: PopupOpenEventArgs): void {
         if (args.type === 'Editor') {
             // Create required custom elements in initial time
