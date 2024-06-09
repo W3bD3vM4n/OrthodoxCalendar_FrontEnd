@@ -49,18 +49,31 @@ export class AppComponent implements OnInit {
                 row.appendChild(container);
                 let dropDownList: DropDownList = new DropDownList({
                     dataSource: [
-                        { text: 'Public Event', value: 'public-event' },
-                        { text: 'Maintenance', value: 'maintenance' },
-                        { text: 'Commercial Event', value: 'commercial-event' },
-                        { text: 'Family Event', value: 'family-event' }
+                        { text: 'Mi evento 1', value: 'my-event' },
+                        { text: 'Mi evento 2', value: 'my-event-2' },
                     ],
                     fields: { text: 'text', value: 'value' },
                     value: (<{ [key: string]: Object; }>(args.data))['EventType'] as string,
-                    floatLabelType: 'Always', placeholder: 'Event Type'
+                    floatLabelType: 'Always', placeholder: 'Seleccionar evento'
                 });
                 dropDownList.appendTo(inputEle);
                 inputEle.setAttribute('name', 'EventType');
             }
         }
     } 
+
+    onPopupCustomAction(args: PopupOpenEventArgs): void {
+        if (args.type === 'Editor') {
+          // Prevent the default editor from opening
+          args.cancel = true;
+    
+          // Execute specific action on edit button click
+          this.executeSpecificAction(args.data);
+        }
+      }
+    
+      executeSpecificAction(eventData: any): void {
+        // Implement the specific action you want to execute here
+        console.log('Edit action triggered for event:', eventData);
+      }
 }

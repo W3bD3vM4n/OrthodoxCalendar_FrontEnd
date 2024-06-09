@@ -2,7 +2,8 @@
     width='100%'
     height='550px'
     [selectedDate]="selectedDate"
-    [eventSettings]="eventSettings">
+    [eventSettings]="eventSettings"
+    (popupOpen)="onPopupOpen($event)">
 </ejs-schedule>
 
 <!-- <router-outlet></router-outlet> -->
