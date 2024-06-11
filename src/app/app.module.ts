@@ -7,11 +7,13 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { SchedulerComponent } from './scheduler/scheduler.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SchedulerComponent
+    SchedulerComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
