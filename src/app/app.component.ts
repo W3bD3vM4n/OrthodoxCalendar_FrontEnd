@@ -1,79 +1,37 @@
-import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { EventSettingsModel, PopupOpenEventArgs, ScheduleComponent, DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
-import { DropDownList } from '@syncfusion/ej2-dropdowns';
-import { createElement, extend } from '@syncfusion/ej2-base';
-import { Evento } from './models/evento.interface';
-import { EventoService } from './services/evento.service';
-import { convertEventosToEventosSF } from './mappers/evento-mapper';
-import { EventoSF } from './models/evento-sf.interface';
+import { Component, ViewChild } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { PopupOpenEventArgs, DayService, WeekService, WorkWeekService, MonthService, AgendaService } from '@syncfusion/ej2-angular-schedule';
+import { DialogComponent } from '@syncfusion/ej2-angular-popups';
 
 @Component({
     selector: 'app-root',
-    providers: [HttpClientModule, DayService, WeekService, WorkWeekService, MonthService, AgendaService],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
+    
+    // Diálogo Personalizado
+    onPopupCustomDialog(args: PopupOpenEventArgs): void {
+        if (args.type === 'Editor') {
+            // Previene que el editor por defecto se abra
+            args.cancel = true;
+    
+            // Llama la función para volver visible el cuadro de diálogo
+            this.showDialog();
+        }
+      }
 
-    public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
+    @ViewChild('ejDialog') ejDialog!: DialogComponent;
+    // El cuadro de diálogo empieza oculto
+    public dialogVisibility: boolean = false;
 
-    eventosFromAPI: Evento[] = [];
-
-    constructor(private eventoService: EventoService) { }
-
-    ngOnInit(): void {
-        this.eventoService.fetchData().subscribe((data: Evento[]) => {
-            this.eventosFromAPI = data;
-            console.log("data:", this.eventosFromAPI)
-            console.log("converted-data:", convertEventosToEventosSF(this.eventosFromAPI))
-            this.eventSettings = { dataSource: convertEventosToEventosSF(data) };
-        })
+    // Función para volver visible el cuadro de diálogo
+    public showDialog(): void {
+        this.dialogVisibility = true;
     }
 
-    public selectedDate: Date = new Date(2024, 5, 8);
-    public views: Array<string> = ['Day', 'Week', 'WorkWeek', 'Month'];
-
-    onPopupOpen(args: PopupOpenEventArgs): void {
-        if (args.type === 'Editor') {
-            // Create required custom elements in initial time
-            if (!args.element.querySelector('.custom-field-row')) {
-                let row: HTMLElement = createElement('div', { className: 'custom-field-row' });
-                let formElement: HTMLElement = args.element.querySelector('.e-schedule-form') as HTMLElement;
-                formElement.firstChild?.insertBefore(row, args.element.querySelector('.e-title-location-row'));
-                let container: HTMLElement = createElement('div', { className: 'custom-field-container' });
-                let inputEle: HTMLInputElement = createElement('input', {
-                    className: 'e-field', attrs: { name: 'EventType' }
-                }) as HTMLInputElement;
-                container.appendChild(inputEle);
-                row.appendChild(container);
-                let dropDownList: DropDownList = new DropDownList({
-                    dataSource: [
-                        { text: 'Mi evento 1', value: 'my-event' },
-                        { text: 'Mi evento 2', value: 'my-event-2' },
-                    ],
-                    fields: { text: 'text', value: 'value' },
-                    value: (<{ [key: string]: Object; }>(args.data))['EventType'] as string,
-                    floatLabelType: 'Always', placeholder: 'Seleccionar evento'
-                });
-                dropDownList.appendTo(inputEle);
-                inputEle.setAttribute('name', 'EventType');
-            }
-        }
-    } 
-
-    onPopupCustomAction(args: PopupOpenEventArgs): void {
-        if (args.type === 'Editor') {
-          // Prevent the default editor from opening
-          args.cancel = true;
-    
-          // Execute specific action on edit button click
-          this.executeSpecificAction(args.data);
-        }
-      }
-    
-      executeSpecificAction(eventData: any): void {
-        // Implement the specific action you want to execute here
-        console.log('Edit action triggered for event:', eventData);
-      }
+    // Función para volver invisible el cuadro de diálogo
+    public hideDialog(): void {
+        this.dialogVisibility = false;
+    }
 }

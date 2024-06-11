@@ -5,16 +5,20 @@ import { ScheduleModule } from '@syncfusion/ej2-angular-schedule';
 import { AppRoutingModule } from './app-routing.module';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { DialogModule } from '@syncfusion/ej2-angular-popups';
+import { SchedulerComponent } from './scheduler/scheduler.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    SchedulerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CalendarModule,
-    ScheduleModule
+    ScheduleModule,
+    DialogModule
   ],
   providers: [
     provideClientHydration(),

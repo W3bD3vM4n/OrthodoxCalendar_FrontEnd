@@ -24,6 +24,7 @@
     "@syncfusion/ej2-angular-base": "^25.2.4",
     "@syncfusion/ej2-angular-calendars": "^25.2.5",
     "@syncfusion/ej2-angular-inputs": "^25.2.6",
+    "@syncfusion/ej2-angular-popups": "^26.1.35",
     "@syncfusion/ej2-angular-schedule": "^25.2.4",
     "@syncfusion/ej2-base": "^25.2.5",
     "@syncfusion/ej2-buttons": "^25.2.4",
