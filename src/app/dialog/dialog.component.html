@@ -1,6 +1,25 @@
-<ejs-dialog #ejDialog [visible]="dialogVisibility" header='Syncfusion Angular Dialog' [showCloseIcon]="true" width='300px'>
-  <ng-template #content>
-    <p>This is a sample modal dialog using Syncfusion Angular Dialog component.</p>
-    <button (click)="hideDialog()">Close</button>
-  </ng-template>
+<button
+    class="e-control e-btn"
+    style="position: absolute;"
+    id="targetButton"
+    (click)="onOpenDialog($event)">
+    Open Modal Dialog
+</button>
+
+<div #container class='root-container'></div>
+<ejs-dialog
+    id='dialog'
+    #ejDialog
+    header='Dialog'
+    showCloseIcon='true'
+    [visible]='visible'
+    isModal='true'
+    content='This is a modal dialog'
+    [target]='targetElement'
+    width='250px'>
+    <ng-template #header>
+        <span class='title'>Dialog</span>
+        <span class='e-icons sf-icon-Maximize' id='max-btn' title='Maximize' (click)='maximize()'></span>
+        <span class='e-icons sf-icon-Minimize' id='min-btn' title='Minimize' (click)='minimize()'></span>
+    </ng-template>
 </ejs-dialog>

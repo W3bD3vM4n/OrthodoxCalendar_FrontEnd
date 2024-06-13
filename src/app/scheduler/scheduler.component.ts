@@ -13,7 +13,7 @@ import { AgendaService, DayService, MonthService, WeekService, WorkWeekService }
   styleUrl: './scheduler.component.css'
 })
 export class SchedulerComponent implements OnInit {
-public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
+    public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
     public eventosFromAPI: Evento[] = [];
 
     // Carga la clase para consumir los datos de la API
@@ -31,5 +31,6 @@ public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
 
     // Selecciona que fecha visualizar en el Scheduler
     public selectedDate: Date = new Date(2024, 0, 14);
-    public views: Array<string> = ['Day', 'Week', 'WorkWeek', 'Month'];
+    public scheduleView: any = ['Month'];
+    // public views: Array<string> = ['Day', 'Week', 'WorkWeek', 'Month'];
 }
