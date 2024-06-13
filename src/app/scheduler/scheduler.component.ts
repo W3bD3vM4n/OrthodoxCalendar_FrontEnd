@@ -32,5 +32,4 @@ export class SchedulerComponent implements OnInit {
     // Selecciona que fecha visualizar en el Scheduler
     public selectedDate: Date = new Date(2024, 0, 14);
     public scheduleView: any = ['Month'];
-    // public views: Array<string> = ['Day', 'Week', 'WorkWeek', 'Month'];
 }
