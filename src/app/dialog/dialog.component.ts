@@ -52,8 +52,13 @@ export class DialogComponent implements OnInit {
     ];
 
     // Manejar la acción del botón al hacer clic
-    public onOpenDialog = (event: any): void => {
-        // Llamar al método show para abrir el diálogo
+    // public onOpenDialog = (event: any): void => {
+    //     // Llamar al método show para abrir el diálogo
+    //     this.ejDialog!.show();
+    // };
+
+    // Llamar al método show para abrir el diálogo
+    public onOpenDialog(): void {
         this.ejDialog!.show();
     };
 }

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Evento } from '../models/evento.interface';
 import { EventoService } from '../services/evento.service';
 import { EventoSF } from '../models/evento-sf.interface';
 import { convertEventosToEventosSF } from '../mappers/evento-mapper';
 import { HttpClientModule } from '@angular/common/http';
-import { AgendaService, DayService, MonthService, WeekService, WorkWeekService } from '@syncfusion/ej2-angular-schedule';
+import { AgendaService, DayService, MonthService, PopupOpenEventArgs, WeekService, WorkWeekService } from '@syncfusion/ej2-angular-schedule';
 
 @Component({
   selector: 'app-scheduler',
@@ -13,6 +13,11 @@ import { AgendaService, DayService, MonthService, WeekService, WorkWeekService }
   styleUrl: './scheduler.component.css'
 })
 export class SchedulerComponent implements OnInit {
+
+    // Comunicacación con 'Componente Hijo'
+    @ViewChild('dialog') dialog : any;
+
+    // Almacenar datos consumidos
     public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
     public eventosFromAPI: Evento[] = [];
 
@@ -32,4 +37,15 @@ export class SchedulerComponent implements OnInit {
     // Selecciona que fecha visualizar en el Scheduler
     public selectedDate: Date = new Date(2024, 0, 14);
     public scheduleView: any = ['Month'];
+
+    // Ventana de PopUp
+    customPopup(args: PopupOpenEventArgs): void {
+        if (args.type !== 'Editor') {
+            // Previene la apertura del editor por defecto
+            args.cancel = true;
+        
+            // Ejecuta la accion especifica aqui
+            this.dialog.onOpenDialog();
+        }
+    }
 }

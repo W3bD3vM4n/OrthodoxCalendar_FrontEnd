@@ -4,5 +4,6 @@
     [selectedDate]="selectedDate"
     [eventSettings]="eventSettings"
     [views]="scheduleView"
-    currentView="month">
+    currentView="Month"
+    (popupOpen)="customPopup($event)">
 </ejs-schedule>
