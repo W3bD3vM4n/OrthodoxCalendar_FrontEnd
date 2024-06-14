@@ -5,6 +5,7 @@ import { EventoSF } from '../models/evento-sf.interface';
 import { convertEventosToEventosSF } from '../mappers/evento-mapper';
 import { HttpClientModule } from '@angular/common/http';
 import { AgendaService, DayService, MonthService, PopupOpenEventArgs, WeekService, WorkWeekService } from '@syncfusion/ej2-angular-schedule';
+import { DialogComponent } from '../dialog/dialog.component'; // Comunicacación con Componente Hijo
 
 @Component({
   selector: 'app-scheduler',
@@ -14,10 +15,10 @@ import { AgendaService, DayService, MonthService, PopupOpenEventArgs, WeekServic
 })
 export class SchedulerComponent implements OnInit {
 
-    // Comunicacación con 'Componente Hijo'
-    @ViewChild('dialog') dialog : any;
+    // Comunicacación con Componente Hijo
+    @ViewChild(DialogComponent) dialogComponent?: DialogComponent;
 
-    // Almacenar datos consumidos
+    // Almacena los datos consumidos
     public eventSettings: { dataSource: EventoSF[] } = { dataSource: [] };
     public eventosFromAPI: Evento[] = [];
 
@@ -25,6 +26,7 @@ export class SchedulerComponent implements OnInit {
     constructor(private eventoService: EventoService) { }
 
     // Obtiene los datos en .json y llena los campos por defecto del editor
+    // por "debajo", para evitar Errores
     ngOnInit(): void {
         this.eventoService.fetchData().subscribe((data: Evento[]) => {
             this.eventosFromAPI = data;
@@ -34,18 +36,18 @@ export class SchedulerComponent implements OnInit {
         })
     }
 
-    // Selecciona que fecha visualizar en el Scheduler
+    // Selecciona que fecha se visualizara en el Scheduler
     public selectedDate: Date = new Date(2024, 0, 14);
     public scheduleView: any = ['Month'];
 
-    // Ventana de PopUp
+    // PopUp de Diálogo personalizado
     customPopup(args: PopupOpenEventArgs): void {
         if (args.type !== 'Editor') {
             // Previene la apertura del editor por defecto
             args.cancel = true;
         
-            // Ejecuta la accion especifica aqui
-            this.dialog.onOpenDialog();
+            // Llama a la ventana de Diálogo
+            this.dialogComponent?.onOpenDialog();
         }
     }
 }
