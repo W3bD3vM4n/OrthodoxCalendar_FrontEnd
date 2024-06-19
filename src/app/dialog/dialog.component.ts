@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EmitType } from '@syncfusion/ej2-base';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
     selector: 'app-dialog',
@@ -8,12 +9,28 @@ import { EmitType } from '@syncfusion/ej2-base';
 })
 export class DialogComponent implements OnInit {
 
+    // Propiedades de la clase
+    code: string = '';
+    iconImageUrl: string = '';
+
+    // Muestra el cuadro de diálogo dentro del elemento
+    targetElement?: HTMLElement;
+
     @ViewChild('ejDialog') ejDialog: DialogComponent | any;
     // Crea una referencia para el elemento
     @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef | any;
-    
-    // Muestra el cuadro de diálogo dentro del elemento
-    public targetElement?: HTMLElement;
+
+
+    // Llama la función para mostrar el Icono
+    constructor(private httpClient: HttpClient) {
+        this.setIconImage();
+    }
+
+    // Imagen del Icono
+    setIconImage(): void {
+        this.iconImageUrl = 'assets/images/months/' + this.code + '.jpg';
+    }
+
 
     // Obtiene todos los elementos
     ngOnInit() {
@@ -35,17 +52,8 @@ export class DialogComponent implements OnInit {
     public buttons: Object = [
         {
             'click': this.hideDialog.bind(this),
-            // Accede a las propiedades del botón
-              buttonModel:{
-              content:'Editar',
-              // Habilita el botón
-              isPrimary: true
-            }
-        },
-        {
-            'click': this.hideDialog.bind(this),
             buttonModel:{
-              content:'Cancel'
+              content:'Close'
             }
         }
     ];

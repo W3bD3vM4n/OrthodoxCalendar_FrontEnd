@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { DialogModule } from '@syncfusion/ej2-angular-popups';
 import { SchedulerComponent } from './scheduler/scheduler.component';
 import { DialogComponent } from './dialog/dialog.component';
+import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
+import { TextAreaModule } from '@syncfusion/ej2-angular-inputs';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { DialogComponent } from './dialog/dialog.component';
     AppRoutingModule,
     CalendarModule,
     ScheduleModule,
-    DialogModule
+    DialogModule,
+    TextBoxModule,
+    TextAreaModule
   ],
   providers: [
     provideClientHydration(),

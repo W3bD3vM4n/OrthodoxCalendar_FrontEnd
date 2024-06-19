@@ -16,18 +16,67 @@
     </ng-template>
     <ng-template #content>
         <div class="h-screen">
-            <div class="grid grid-cols-2 gap-4 h-full p-4">
-                <div class="col-span-1 row-span-10 bg-gray-200 p-4 border border-gray-300">Columna 1, Fila 1</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 1</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 2</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 3</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 4</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 5</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 6</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 7</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 8</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 9</div>
-                <div class="col-span-1 bg-green-200 p-4 border border-gray-300">Columna 2, Fila 10</div>
+            <div class="grid grid-cols-2 gap-x-4 h-full p-4 pt-0">
+                <!-- columna 1, fila 1 -->
+                <div class="col-span-1 row-span-10 bg-gray-200 p-4 border border-gray-300">
+                    <!-- <div class="background-cover" [ngStyle]="{'background-image': 'url(' + backgroundImageUrl + ')'}"></div> -->
+                </div>
+                <!-- columna 2, fila 1 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="diaCalendarioCivil" class="uppercase font-medium">día calendario civil:</label>
+                    <div class="pastel-ambar">
+                        <ejs-textbox id="diaCalendarioCivil" cssClass="e-outline"></ejs-textbox>
+                    </div>
+                </div>
+                <!-- columna 2, fila 2 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="diaCalendarioJuliano" class="uppercase font-medium">día calendario juliano:</label>
+                    <div class="pastel-orange">
+                        <ejs-textbox id="diaCalendarioJuliano" cssClass="e-outline"></ejs-textbox>
+                    </div>
+                </div>
+                <!-- columna 2, fila 3 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="descripcionDia" class="uppercase font-medium">descripción del día:</label>
+                    <ejs-textarea id="descripcionDia" cssClass="e-outline"></ejs-textarea>
+                </div>
+                <!-- columna 2, fila 4 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="tonoCantico" class="uppercase font-medium">tono de cántico:</label>
+                    <ejs-textbox id="tonoCantico" cssClass="e-outline"></ejs-textbox>
+                </div>
+                <!-- columna 2, fila 5 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="guiaAyuno" class="uppercase font-medium">guia de ayuno:</label>
+                    <ejs-textarea id="guiaAyuno" cssClass="e-outline"></ejs-textarea>
+                </div>
+                <!-- columna 2, fila 6 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="fiestasLiturgicas" class="uppercase font-medium">fiestas litúrgicas:</label>
+                    <div class="pastel-yellow">
+                        <ejs-textarea id="fiestasLiturgicas" cssClass="e-outline"></ejs-textarea>
+                    </div>
+                </div>
+                <!-- columna 2, fila 7 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="santosCelebrados" class="uppercase font-medium">santos celebrados:</label>
+                    <ejs-textarea id="santosCelebrados" cssClass="e-outline"></ejs-textarea>
+                </div>
+                <!-- columna 2, fila 8 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="guiaLiturgia" class="uppercase font-medium">guia de liturgia:</label>
+                    <ejs-textbox id="guiaLiturgia" cssClass="e-outline"></ejs-textbox>
+                </div>
+                <!-- columna 2, fila 9 -->
+                <div class="col-span-1 p-4 pt-0">
+                    <label for="lecturaDiariaEpistola" class="uppercase font-medium">lectura diaria de epístola:</label>
+                    <ejs-textarea id="lecturaDiariaEpistola" cssClass="e-outline"></ejs-textarea>
+                </div>
+                <!-- columna 2, fila 10 -->
+                <div class="col-span-1 p-4 pt-0 pb-0">
+                    <label for="lecturaDiariaEvangelio" class="uppercase font-medium">lectura diaria de evangelio:</label>
+                    <ejs-textarea id="lecturaDiariaEvangelio" cssClass="e-outline"></ejs-textarea>
+                </div>
             </div>
         </div>
     </ng-template>
