@@ -9,7 +9,7 @@ import { EmitType } from '@syncfusion/ej2-base';
 export class DialogComponent implements OnInit {
 
     // Propiedades de la clase
-    code: string = '';
+    public code: string = '';
 
     // Muestra el cuadro de diálogo dentro del elemento
     targetElement?: HTMLElement;
@@ -17,6 +17,7 @@ export class DialogComponent implements OnInit {
     @ViewChild('ejDialog') ejDialog: DialogComponent | any;
     // Crea una referencia para el elemento
     @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef | any;
+
 
     // Obtiene todos los elementos
     ngOnInit(): void {
@@ -48,4 +49,11 @@ export class DialogComponent implements OnInit {
     public onOpenDialog(): void {
         this.ejDialog!.show();
     };
+
+    // Llama al método getId de la celda
+    public getId(idCelda: number): void {
+        if (idCelda !== undefined) {
+            console.log('Id recibido: ' + idCelda);
+        }
+    }
 }

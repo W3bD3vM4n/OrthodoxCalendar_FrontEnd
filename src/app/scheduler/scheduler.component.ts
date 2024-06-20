@@ -15,6 +15,9 @@ import { DialogComponent } from '../dialog/dialog.component'; // Comunicacación
 })
 export class SchedulerComponent implements OnInit {
 
+    // Propiedades de la clase
+    public eventoSF?: EventoSF;
+
     // Comunicacación con Componente Hijo
     @ViewChild(DialogComponent) dialogComponent?: DialogComponent;
 
@@ -46,14 +49,14 @@ export class SchedulerComponent implements OnInit {
             args.cancel = true;
 
             // Obtiene el Id de la celda
-            var eventoSF = args.data as EventoSF;
-            console.log(eventoSF);
+            this.eventoSF = args.data as EventoSF;
+            console.log(this.eventoSF);
 
-            // Codigo para enviar a componente Dialogo
-            
+            // Envia el Id de la celda
+            this.dialogComponent?.getId(this.eventoSF.Id);
 
             // Evita que se abra el Dialogo si se da clic afuera
-            if(eventoSF.Id !== undefined) {
+            if(this.eventoSF.Id !== undefined) {
                 // Abre el Dialogo
                 this.dialogComponent?.onOpenDialog();
             }
