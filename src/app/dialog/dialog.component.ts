@@ -9,7 +9,8 @@ import { EmitType } from '@syncfusion/ej2-base';
 export class DialogComponent implements OnInit {
 
     // Propiedades de la clase
-    public code: string = '';
+    public idExtraido: number = 0;
+    public imageIconUrl: string = '';
 
     // Muestra el cuadro de diálogo dentro del elemento
     targetElement?: HTMLElement;
@@ -53,7 +54,10 @@ export class DialogComponent implements OnInit {
     // Llama al método getId de la celda
     public getId(idCelda: number): void {
         if (idCelda !== undefined) {
-            console.log('Id recibido: ' + idCelda);
+            // console.log('Id recibido: ' + idCelda);
+            this.idExtraido = idCelda;
+            this.imageIconUrl = 'assets/images/months/' + idCelda + '.jpg';
+            // console.log(this.imageIconUrl);
         }
     }
 }
