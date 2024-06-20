@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { EmitType } from '@syncfusion/ej2-base';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 @Component({
     selector: 'app-dialog',
@@ -11,7 +10,6 @@ export class DialogComponent implements OnInit {
 
     // Propiedades de la clase
     code: string = '';
-    iconImageUrl: string = '';
 
     // Muestra el cuadro de diálogo dentro del elemento
     targetElement?: HTMLElement;
@@ -20,20 +18,8 @@ export class DialogComponent implements OnInit {
     // Crea una referencia para el elemento
     @ViewChild('container', { read: ElementRef, static: true }) container: ElementRef | any;
 
-
-    // Llama la función para mostrar el Icono
-    constructor(private httpClient: HttpClient) {
-        this.setIconImage();
-    }
-
-    // Imagen del Icono
-    setIconImage(): void {
-        this.iconImageUrl = 'assets/images/months/' + this.code + '.jpg';
-    }
-
-
     // Obtiene todos los elementos
-    ngOnInit() {
+    ngOnInit(): void {
         this.initilaizeTarget();
     }
 
