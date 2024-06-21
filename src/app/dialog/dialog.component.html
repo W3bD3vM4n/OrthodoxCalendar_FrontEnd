@@ -12,7 +12,7 @@
     height="90%"
     [buttons]='buttons'>
     <ng-template #header>
-        <span class='title'>Descripción</span>
+        <span class='title'>{{ tituloVentana }}</span>
     </ng-template>
     <ng-template #content>
         <div class="h-screen">
@@ -25,7 +25,7 @@
                 <div class="col-span-1 p-4 pt-0">
                     <label for="diaCalendarioCivil" class="uppercase font-medium">día calendario civil:</label>
                     <div class="pastel-ambar">
-                        <ejs-textbox id="diaCalendarioCivil" cssClass="e-outline" [(value)]="celda.diaCalendarioCivil">
+                        <ejs-textbox id="diaCalendarioCivil" cssClass="e-outline" [(value)]="fechaCivil">
 						</ejs-textbox>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
                 <div class="col-span-1 p-4 pt-0">
                     <label for="diaCalendarioJuliano" class="uppercase font-medium">día calendario juliano:</label>
                     <div class="pastel-orange">
-                        <ejs-textbox id="diaCalendarioJuliano" cssClass="e-outline" [(value)]="celda.diaCalendarioJuliano"></ejs-textbox>
+                        <ejs-textbox id="diaCalendarioJuliano" cssClass="e-outline" [(value)]="fechaJuliana"></ejs-textbox>
                     </div>
                 </div>
                 <!-- columna 2, fila 3 -->

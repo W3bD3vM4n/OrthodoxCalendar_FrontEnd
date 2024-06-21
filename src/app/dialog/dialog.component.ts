@@ -13,6 +13,9 @@ export class DialogComponent implements OnInit {
     public imageIconUrl: string = '';
     public apiGetIdUrl: string = '';
     public celda: any = {};
+    public tituloVentana: string = '';
+    public fechaCivil: string = '';
+    public fechaJuliana: string = '';
 
     // Muestra el cuadro de diálogo dentro del elemento
     public targetElement?: HTMLElement;
@@ -57,7 +60,7 @@ export class DialogComponent implements OnInit {
 
     // Llama al método getId de la celda
     public getId(idCelda: number): void {
-        if (idCelda !== undefined) {
+        if (idCelda !== null || undefined) {
             this.imageIconUrl = 'assets/images/months/' + idCelda + '.jpg';
             this.apiGetIdUrl = 'https://localhost:7247/api/Evento/' + idCelda;
 
@@ -65,7 +68,26 @@ export class DialogComponent implements OnInit {
             .get(this.apiGetIdUrl)
             .subscribe((data: any) => {
                this.celda = data;
+
+                if (this.celda.tituloIcono !== null || undefined) {
+                    this.tituloVentana = this.celda.diaCalendarioCivil + ': ' + this.celda.tituloIcono;
+                }
+                else {
+                    this.tituloVentana = this.celda.diaCalendarioCivil;
+                }
+               
+                this.fechaCivil = this.formatDate(this.celda.fechaInicio);
+                this.fechaJuliana = this.formatDate(this.celda.diaCalendarioJuliano);
             });
         }
+    }
+
+    // Formatea el tiempo obtenido del .json
+    public formatDate(inputDate: string): string {
+        const date = new Date(inputDate);
+        const year = date.getFullYear();
+        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, '0');
+        return `${year}-${month}-${day}`;
     }
 }
