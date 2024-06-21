@@ -25,8 +25,7 @@
                 <div class="col-span-1 p-4 pt-0">
                     <label for="diaCalendarioCivil" class="uppercase font-medium">día calendario civil:</label>
                     <div class="pastel-ambar">
-                        <ejs-textbox id="diaCalendarioCivil" cssClass="e-outline">
-							<!-- {{ eventosFromAPI }} -->
+                        <ejs-textbox id="diaCalendarioCivil" cssClass="e-outline" [(value)]="celda.diaCalendarioCivil">
 						</ejs-textbox>
                     </div>
                 </div>
@@ -34,50 +33,50 @@
                 <div class="col-span-1 p-4 pt-0">
                     <label for="diaCalendarioJuliano" class="uppercase font-medium">día calendario juliano:</label>
                     <div class="pastel-orange">
-                        <ejs-textbox id="diaCalendarioJuliano" cssClass="e-outline"></ejs-textbox>
+                        <ejs-textbox id="diaCalendarioJuliano" cssClass="e-outline" [(value)]="celda.diaCalendarioJuliano"></ejs-textbox>
                     </div>
                 </div>
                 <!-- columna 2, fila 3 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="descripcionDia" class="uppercase font-medium">descripción del día:</label>
-                    <ejs-textarea id="descripcionDia" cssClass="e-outline"></ejs-textarea>
+                    <ejs-textarea id="descripcionDia" cssClass="e-outline" [(value)]="celda.descripcionDia"></ejs-textarea>
                 </div>
                 <!-- columna 2, fila 4 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="tonoCantico" class="uppercase font-medium">tono de cántico:</label>
-                    <ejs-textbox id="tonoCantico" cssClass="e-outline"></ejs-textbox>
+                    <ejs-textbox id="tonoCantico" cssClass="e-outline" [(value)]="celda.tonoCantico"></ejs-textbox>
                 </div>
                 <!-- columna 2, fila 5 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="guiaAyuno" class="uppercase font-medium">guia de ayuno:</label>
-                    <ejs-textarea id="guiaAyuno" cssClass="e-outline"></ejs-textarea>
+                    <ejs-textarea id="guiaAyuno" cssClass="e-outline" [(value)]="celda.guiaAyuno"></ejs-textarea>
                 </div>
                 <!-- columna 2, fila 6 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="fiestasLiturgicas" class="uppercase font-medium">fiestas litúrgicas:</label>
                     <div class="pastel-yellow">
-                        <ejs-textarea id="fiestasLiturgicas" cssClass="e-outline"></ejs-textarea>
+                        <ejs-textarea id="fiestasLiturgicas" cssClass="e-outline" [(value)]="celda.fiestasLiturgicas"></ejs-textarea>
                     </div>
                 </div>
                 <!-- columna 2, fila 7 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="santosCelebrados" class="uppercase font-medium">santos celebrados:</label>
-                    <ejs-textarea id="santosCelebrados" cssClass="e-outline"></ejs-textarea>
+                    <ejs-textarea id="santosCelebrados" cssClass="e-outline" [(value)]="celda.santosCelebrados"></ejs-textarea>
                 </div>
                 <!-- columna 2, fila 8 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="guiaLiturgia" class="uppercase font-medium">guia de liturgia:</label>
-                    <ejs-textbox id="guiaLiturgia" cssClass="e-outline"></ejs-textbox>
+                    <ejs-textbox id="guiaLiturgia" cssClass="e-outline" [(value)]="celda.guiaLiturgia"></ejs-textbox>
                 </div>
                 <!-- columna 2, fila 9 -->
                 <div class="col-span-1 p-4 pt-0">
                     <label for="lecturaDiariaEpistola" class="uppercase font-medium">lectura diaria de epístola:</label>
-                    <ejs-textarea id="lecturaDiariaEpistola" cssClass="e-outline"></ejs-textarea>
+                    <ejs-textarea id="lecturaDiariaEpistola" cssClass="e-outline" [(value)]="celda.lecturaDiariaEpistola"></ejs-textarea>
                 </div>
                 <!-- columna 2, fila 10 -->
                 <div class="col-span-1 p-4 pt-0 pb-0">
                     <label for="lecturaDiariaEvangelio" class="uppercase font-medium">lectura diaria de evangelio:</label>
-                    <ejs-textarea id="lecturaDiariaEvangelio" cssClass="e-outline"></ejs-textarea>
+                    <ejs-textarea id="lecturaDiariaEvangelio" cssClass="e-outline" [(value)]="celda.lecturaDiariaEvangelio"></ejs-textarea>
                 </div>
             </div>
         </div>

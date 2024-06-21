@@ -7,11 +7,14 @@ import { Evento } from '../models/evento.interface';
   providedIn: 'root'
 })
 export class EventoService {
+
   private apiUrl = 'https://localhost:7247/api/Evento';
 
   constructor(private http: HttpClient) { }
 
+  // Para todos los datos
   fetchData(): Observable<Evento[]> {
     return this.http.get<Evento[]>(this.apiUrl);
   }
+  
 }
