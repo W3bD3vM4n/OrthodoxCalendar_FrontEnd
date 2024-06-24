@@ -19,7 +19,7 @@
             <div class="grid grid-cols-2 gap-x-4 h-full p-4 pt-0">
                 <!-- columna 1, fila 1 -->
                 <div class="col-span-1 row-span-10 icon-border-ambar p-4">
-                    <img class="size-full" [src]="imageIconUrl" alt="Icono del día" />
+                    <img class="size-full" [src]="imageIconUrl" alt="Icono del día" (click)="onOpenDialogPlus()" />
                 </div>
                 <!-- columna 2, fila 1 -->
                 <div class="col-span-1 p-4 pt-0">
@@ -82,3 +82,6 @@
         </div>
     </ng-template>
 </ejs-dialog>
+
+<!-- Establece Comunicación con Componente Hijo -->
+<app-dialog-plus #ejDialogPlus></app-dialog-plus>

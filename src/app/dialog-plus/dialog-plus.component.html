@@ -1,0 +1,24 @@
+<div #container class='root-container'></div>
+<ejs-dialog
+    id='dialogPlus'
+    #ejDialogPlus
+    header='Dialog'
+    showCloseIcon='true'
+    [visible]='visible'
+    isModal='true'
+    content='This is a modal dialog'
+    [target]='targetElement'
+    width='90%'
+    height="85%"
+    [buttons]='buttons'
+    [zIndex]="2000">
+    <ng-template #header>
+        <span class='title uppercase'>historia del día</span>
+    </ng-template>
+    <ng-template #content>
+        <div class="h-screen">
+            <ejs-textarea id="descripcionDetallada" cssClass="e-outline h-full max-h-full" [(value)]="descripcion"></ejs-textarea>
+        </div>
+    </ng-template>
+
+</ejs-dialog>

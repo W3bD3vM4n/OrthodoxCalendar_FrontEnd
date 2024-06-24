@@ -11,12 +11,14 @@ import { SchedulerComponent } from './scheduler/scheduler.component';
 import { DialogComponent } from './dialog/dialog.component';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { TextAreaModule } from '@syncfusion/ej2-angular-inputs';
+import { DialogPlusComponent } from './dialog-plus/dialog-plus.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SchedulerComponent,
-    DialogComponent
+    DialogComponent,
+    DialogPlusComponent
   ],
   imports: [
     BrowserModule,
