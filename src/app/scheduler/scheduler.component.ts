@@ -18,6 +18,9 @@ export class SchedulerComponent implements OnInit {
     // Propiedades de la clase
     public eventoSF?: EventoSF;
 
+    public mail: string = 'iglesiaortodoxa@gmail.com';
+    public phone: string = '+593 997759332';
+
     // Comunicacación con Componente Hijo
     @ViewChild(DialogComponent) dialogComponent?: DialogComponent;
 

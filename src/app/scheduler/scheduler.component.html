@@ -1,12 +1,62 @@
-<ejs-schedule 
-    width='100%'
-    height='550px'
-    [selectedDate]="selectedDate"
-    [eventSettings]="eventSettings"
-    [views]="scheduleView"
-    currentView="Month"
-    (popupOpen)="customPopup($event)">
-</ejs-schedule>
+<div class="flex flex-col min-h-screen">
 
-<!-- Establece Comunicación con Componente Hijo -->
-<app-dialog></app-dialog>
+    <!-- Header -->
+    <header class="color-cream text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <div>
+                <a href="https://ortodoxa.net/">
+                    <img class="w-1/4" src="assets/images/logo-gox.png" alt="Logo Iglesia Ortodoxa">
+                </a>
+            </div>
+            <!-- <h1 class="text-2xl">My Website</h1> -->
+            <nav>
+                <ul class="flex space-x-4 uppercase text-color-ambar font-medium text-sm">
+                    <li><a href="#" class="hover:underline">nosotros</a></li>
+                    <li><a href="#" class="hover:underline">doctrina</a></li>
+                    <li><a href="#" class="hover:underline">iglesia</a></li>
+                    <li><a href="#" class="hover:underline">noticias</a></li>
+                    <li><a href="#" class="hover:underline">tienda</a></li>
+                    <li><a href="#" class="hover:underline">contactos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-full overflow-auto p-4">
+        <ejs-schedule 
+            width='100%'
+            height='100%'
+            [selectedDate]="selectedDate"
+            [eventSettings]="eventSettings"
+            [views]="scheduleView"
+            currentView="Month"
+            (popupOpen)="customPopup($event)">
+        </ejs-schedule>
+
+        <!-- Establece Comunicación con Componente Hijo -->
+        <app-dialog></app-dialog>
+    </main>
+
+    <!-- Footer -->
+    <footer class="color-cream text-white p-4 mt-auto">
+
+        <nav>
+            <ul class="flex space-x-4 place-content-center text-color-ambar">
+                <li>
+                    <span class="inline-flex items-baseline text-sm">
+                        <img src="assets/icons/envelope-regular.svg" alt="Icono correo" width="8" height="8" class="self-center w-5 h-5 mx-1 icon-color-ambar">
+                        <span>{{ mail }}</span>
+                    </span>
+                </li>
+                <li>
+                    <span class="inline-flex items-baseline text-sm">
+                        <img src="assets/icons/phone-solid.svg" alt="Icono telefono" width="8" height="8" class="self-center w-5 h-5 mx-1 icon-color-ambar">
+                        <span>{{ phone }}</span>
+                    </span>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+</div>

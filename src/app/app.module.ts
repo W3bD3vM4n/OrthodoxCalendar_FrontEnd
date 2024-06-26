@@ -12,6 +12,7 @@ import { DialogComponent } from './dialog/dialog.component';
 import { TextBoxModule } from '@syncfusion/ej2-angular-inputs';
 import { TextAreaModule } from '@syncfusion/ej2-angular-inputs';
 import { DialogPlusComponent } from './dialog-plus/dialog-plus.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { DialogPlusComponent } from './dialog-plus/dialog-plus.component';
     ScheduleModule,
     DialogModule,
     TextBoxModule,
-    TextAreaModule
+    TextAreaModule,
+    FontAwesomeModule
   ],
   providers: [
     provideClientHydration(),

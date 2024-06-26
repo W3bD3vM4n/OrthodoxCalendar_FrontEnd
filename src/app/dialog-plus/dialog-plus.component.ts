@@ -10,6 +10,7 @@ export class DialogPlusComponent implements OnInit {
 
 	public visible: Boolean = false;
 	public descripcion: string = '';
+	public soloLectura: boolean = true;
 
 	// Muestra el cuadro de diálogo dentro del elemento
 	public targetElement?: HTMLElement;
@@ -38,7 +39,7 @@ export class DialogPlusComponent implements OnInit {
 		{
 			'click': this.hideDialog.bind(this),
 			buttonModel: {
-				content: 'Close'
+				content: 'Cerrar'
 			}
 		}
 	];

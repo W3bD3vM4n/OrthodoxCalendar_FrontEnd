@@ -18,6 +18,7 @@ export class DialogComponent implements OnInit {
     public fechaCivil: string = '';
     public fechaJuliana: string = '';
     public detalle: string = '';
+    public soloLectura: boolean = true;
 
     // Muestra el cuadro de diálogo dentro del elemento
     public targetElement?: HTMLElement;
@@ -49,7 +50,7 @@ export class DialogComponent implements OnInit {
         {
             'click': this.hideDialog.bind(this),
             buttonModel: {
-                content: 'Close'
+                content: 'Cerrar'
             }
         }
     ];
